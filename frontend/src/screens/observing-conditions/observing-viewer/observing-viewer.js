@@ -63,6 +63,9 @@ class ObservingViewer extends React.Component {
   renderImage = () => {
     const { classes } = this.props;
     let url = '';
+    const endpoint = this.props.datashader
+      ? `${this.props.plot}/?`
+      : `dashboard/load_series/?plot=${this.props.plot}&`;
 
     if (
       this.props.plot === 'timeseries' &&
@@ -72,7 +75,7 @@ class ObservingViewer extends React.Component {
       this.props.spectrograph.length !== 0 &&
       this.props.endDate !== ''
     )
-      url = `${apiUrl}${this.props.plot}/?yaxis=${
+      url = `${apiUrl}${endpoint}yaxis=${
         this.props.yaxis
       }&start=${this.formatDate(this.props.startDate)}&end=${this.formatDate(
         this.props.endDate
@@ -89,7 +92,7 @@ class ObservingViewer extends React.Component {
         this.props.spectrograph.length !== 0 &&
         this.props.endDate !== ''
       )
-        url = `${apiUrl}${this.props.plot}/?yaxis=${this.props.yaxis}&xaxis=${
+        url = `${apiUrl}${endpoint}yaxis=${this.props.yaxis}&xaxis=${
           this.props.xaxis
         }&amp=${this.props.amp}&start=${this.formatDate(
           this.props.startDate
