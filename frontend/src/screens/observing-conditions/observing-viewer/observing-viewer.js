@@ -41,6 +41,7 @@ class ObservingViewer extends React.Component {
     startDate: PropTypes.string,
     endDate: PropTypes.string,
     classes: PropTypes.object,
+    datashader: PropTypes.bool,
     loadEnd: PropTypes.func.isRequired,
   };
 
@@ -71,11 +72,11 @@ class ObservingViewer extends React.Component {
       this.props.spectrograph.length !== 0 &&
       this.props.endDate !== ''
     )
-      url = `${apiUrl}dashboard/load_series/?plot=${this.props.plot}&yaxis=${
+      url = `${apiUrl}${this.props.plot}/?yaxis=${
         this.props.yaxis
       }&start=${this.formatDate(this.props.startDate)}&end=${this.formatDate(
         this.props.endDate
-      )}&camera=${this.props.arm}${this.props.spectrograph[0]}`;
+        )}&camera=${this.props.arm}${this.props.spectrograph[0]}&datashade=${this.props.datashader}`;
     else {
       if (
         this.props.plot === 'regression' &&
@@ -86,13 +87,13 @@ class ObservingViewer extends React.Component {
         this.props.spectrograph.length !== 0 &&
         this.props.endDate !== ''
       )
-        url = `${apiUrl}dashboard/load_series/?plot=${this.props.plot}&yaxis=${
+        url = `${apiUrl}${this.props.plot}/?yaxis=${
           this.props.yaxis
         }&xaxis=${this.props.xaxis}&amp=${
           this.props.amp
         }&start=${this.formatDate(this.props.startDate)}&end=${this.formatDate(
           this.props.endDate
-        )}&camera=${this.props.arm}${this.props.spectrograph[0]}`;
+          )}&camera=${this.props.arm}${this.props.spectrograph[0]}&datashade=${this.props.datashader}`;
     }
 
     if (url !== '')

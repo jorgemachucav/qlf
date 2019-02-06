@@ -35,11 +35,7 @@ try:
 
     df = pd.DataFrame(list(outputs))
 
-    tooltips = [
-        ('Exposure', '@exposure_id'),
-        ('camera', '@camera'),
-        ('Date', '@datef'),
-    ]
+
     colors = [
         'red',
         'blue',
@@ -47,20 +43,27 @@ try:
         'orange'
     ]
     plot = hv.Curve([])
-    hover = HoverTool(tooltips=tooltips)
     if amp != None:
         for amp in amp.split(','):
             idx = int(amp)-1
             amp_name = "AMP {}".format(amp)
-            df[amp_name] = df['value'].apply(lambda x: x[idx])
+            amp_key = "AMP{}".format(amp)
+            df[amp_key] = df['value'].apply(lambda x: x[idx])
             if DATASHADE == 'true':
-                plot = plot * datashade(hv.Curve(df, ['mjd', amp_name], ['exposure_id', 'camera',
+                plot = plot * datashade(hv.Curve(df, ['mjd', amp_key], ['exposure_id', 'camera',
                                                                          'datef', 'dateobs'], label=amp_name))
             else:
-                plot = plot * hv.Curve(df, ['mjd', amp_name], ['exposure_id', 'camera',
+                plot = plot * hv.Curve(df, ['mjd', amp_key], ['exposure_id', 'camera',
                                                                'datef', 'dateobs'], label=amp_name)
-                points = hv.Points(df, ['mjd', amp_name], ['exposure_id', 'camera',
-                                                           'datef', 'dateobs'], label=amp_name).opts(tools=[hover], size=2.5)
+                tooltips = [
+                    ('Exposure', '@exposure_id'),
+                    ('camera', '@camera'),
+                    ('Date', '@datef'),
+                    (yaxis, '@{}'.format(amp_key)),
+                ]
+                hover = HoverTool(tooltips=tooltips)
+                points = hv.Points(df, ['mjd', amp_key], ['exposure_id', 'camera',
+                                                           'datef', 'dateobs'], label=amp_name).opts(tools=[hover], size=3)
                 plot = plot*points
     else:
         df[yaxis] = df['value'].apply(lambda x: x[0])
@@ -69,11 +72,18 @@ try:
         if DATASHADE == 'true':
             plot = datashade(plot)
         else:
+            tooltips = [
+                ('Exposure', '@exposure_id'),
+                ('camera', '@camera'),
+                ('Date', '@datef'),
+                (yaxis, '@{}'.format(yaxis)),
+            ]
+            hover = HoverTool(tooltips=tooltips)
             points = hv.Points(df, ['mjd', yaxis], ['exposure_id', 'camera',
                                                     'datef', 'dateobs'], label=yaxis).opts(tools=[hover], size=3)
             plot = plot*points
     layout = plot.redim.label(x='mjd', y=yaxis).opts(
-        sizing_mode='scale_width', height=100, padding=0.1, fontsize='1.2vw')
+        sizing_mode='scale_width', height=100, padding=0.1, fontsize='1.2vw', toolbar='above', active_tools=["box_zoom"], title='Camera: {}'.format(camera))
     doc = renderer.server_doc(layout)
     doc.title = 'Time Series'
 except Exception as e:

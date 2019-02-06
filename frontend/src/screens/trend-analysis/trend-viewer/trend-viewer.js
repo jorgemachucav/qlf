@@ -42,6 +42,7 @@ class TrendViewer extends React.Component {
     endDate: PropTypes.string,
     classes: PropTypes.object,
     loadEnd: PropTypes.func.isRequired,
+    datashader: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -72,13 +73,13 @@ class TrendViewer extends React.Component {
       this.props.startDate !== '' &&
       this.props.endDate !== ''
     )
-      url = `${apiUrl}dashboard/load_series/?plot=${this.props.plot}&yaxis=${
+      url = `${apiUrl}${this.props.plot}/?yaxis=${
         this.props.yaxis
-      }&amp=${this.props.amp.join(',')}&start=${this.formatDate(
-        this.props.startDate
-      )}&end=${this.formatDate(this.props.endDate)}&camera=${this.props.arm}${
+        }&amp=${this.props.amp.join(',')}&start=${this.formatDate(this.props.startDate)}&end=${this.formatDate(
+        this.props.endDate
+      )}&camera=${this.props.arm}${
         this.props.spectrograph[0]
-      }`;
+      }&datashade=${String(this.props.datashader)}`;
     // else if (
     //   this.props.plot === 'regression' &&
     //   this.props.xaxis !== '' &&
