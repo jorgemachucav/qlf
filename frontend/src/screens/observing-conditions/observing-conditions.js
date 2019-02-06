@@ -530,26 +530,28 @@ class ObservingConditions extends React.Component {
 
   renderDatashadeSelection = () => {
     const { classes } = this.props;
-    return (
-      <div className={this.props.classes.selectionRadio}>
-        <FormControl className={this.props.classes.formControl}>
-          <FormGroup className={this.props.classes.column}>
-            <FormControlLabel
-              value={this.state.datashader}
-              control={
-                <Checkbox
-                  checked={this.state.datashader}
-                  onChange={this.handleChangeDatashader}
-                  classes={{ root: classes.wh }}
-                />
-              }
-              label={'Datashader'}
-              classes={{ label: classes.text, root: classes.lineH }}
-            />
-          </FormGroup>
-        </FormControl>
-      </div>
-    );
+    if (this.state.tab === 'Time Series') {
+      return (
+        <div className={this.props.classes.selectionRadio}>
+          <FormControl className={this.props.classes.formControl}>
+            <FormGroup className={this.props.classes.column}>
+              <FormControlLabel
+                value={this.state.datashader}
+                control={
+                  <Checkbox
+                    checked={this.state.datashader}
+                    onChange={this.handleChangeDatashader}
+                    classes={{ root: classes.wh }}
+                  />
+                }
+                label={'Datashader'}
+                classes={{ label: classes.text, root: classes.lineH }}
+              />
+            </FormGroup>
+          </FormControl>
+        </div>
+      );
+    }
   };
 
   renderSelectDate = () => {
@@ -600,7 +602,7 @@ class ObservingConditions extends React.Component {
           endDate={this.state.selectEndDate}
           yaxis={this.state.selectYaxis}
           xaxis={this.state.selectXaxis}
-          datashader={this.state.SelectDatashader}
+          datashader={this.state.selectDatashader}
           datePeriod={this.state.datePeriod}
           arm={this.state.selectArm}
           spectrograph={this.state.selectSpectrograph}

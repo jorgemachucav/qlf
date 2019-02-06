@@ -75,9 +75,9 @@ class TrendViewer extends React.Component {
     )
       url = `${apiUrl}${this.props.plot}/?yaxis=${
         this.props.yaxis
-        }&amp=${this.props.amp.join(',')}&start=${this.formatDate(this.props.startDate)}&end=${this.formatDate(
-        this.props.endDate
-      )}&camera=${this.props.arm}${
+      }&amp=${this.props.amp.join(',')}&start=${this.formatDate(
+        this.props.startDate
+      )}&end=${this.formatDate(this.props.endDate)}&camera=${this.props.arm}${
         this.props.spectrograph[0]
       }&datashade=${String(this.props.datashader)}`;
     // else if (

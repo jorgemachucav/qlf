@@ -83,9 +83,13 @@ try:
                                                     'datef', 'dateobs'], label=yaxis).opts(tools=[hover], size=3)
             plot = plot*points
     layout = plot.redim.label(x='mjd', y=yaxis).opts(
-        sizing_mode='scale_width', height=100, padding=0.1, fontsize='1.2vw', toolbar='above', active_tools=["box_zoom"], title='Camera: {}'.format(camera))
+        sizing_mode='scale_width', height=150, padding=0.1, fontsize='1.2vw', toolbar='above', active_tools=["box_zoom"], title='Camera: {}'.format(camera))
     doc = renderer.server_doc(layout)
     doc.title = 'Time Series'
 except Exception as e:
-    print(e)
-    sys.exit()
+    renderer = hv.renderer('bokeh')
+    print('error', e)
+    doc = renderer.server_doc(hv.Div("""
+        <p style="font-size: 2.2vw"> Couldn't Load Time Series </p>
+    """))
+    doc.title = 'Time Series Error'

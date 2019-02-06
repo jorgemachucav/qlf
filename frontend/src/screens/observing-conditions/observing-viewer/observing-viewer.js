@@ -76,7 +76,9 @@ class ObservingViewer extends React.Component {
         this.props.yaxis
       }&start=${this.formatDate(this.props.startDate)}&end=${this.formatDate(
         this.props.endDate
-        )}&camera=${this.props.arm}${this.props.spectrograph[0]}&datashade=${this.props.datashader}`;
+      )}&camera=${this.props.arm}${this.props.spectrograph[0]}&datashade=${
+        this.props.datashader
+      }`;
     else {
       if (
         this.props.plot === 'regression' &&
@@ -87,13 +89,13 @@ class ObservingViewer extends React.Component {
         this.props.spectrograph.length !== 0 &&
         this.props.endDate !== ''
       )
-        url = `${apiUrl}${this.props.plot}/?yaxis=${
-          this.props.yaxis
-        }&xaxis=${this.props.xaxis}&amp=${
-          this.props.amp
-        }&start=${this.formatDate(this.props.startDate)}&end=${this.formatDate(
-          this.props.endDate
-          )}&camera=${this.props.arm}${this.props.spectrograph[0]}&datashade=${this.props.datashader}`;
+        url = `${apiUrl}${this.props.plot}/?yaxis=${this.props.yaxis}&xaxis=${
+          this.props.xaxis
+        }&amp=${this.props.amp}&start=${this.formatDate(
+          this.props.startDate
+        )}&end=${this.formatDate(this.props.endDate)}&camera=${this.props.arm}${
+          this.props.spectrograph[0]
+        }&datashade=${this.props.datashader}`;
     }
 
     if (url !== '')

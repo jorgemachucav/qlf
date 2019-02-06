@@ -3,7 +3,6 @@ import pandas as pd
 import holoviews.plotting.bokeh
 from qlf_models import QLFModels
 from holoviews.operation.datashader import datashade
-from bokeh.models import HoverTool
 from bokeh.plotting import curdoc
 import sys
 from datetime import datetime
@@ -33,7 +32,7 @@ try:
     outputs_y = models.get_product_metrics_by_camera(
         yaxis, camera, begin_date=start_date, end_date=end_date)
     outputs_x = models.get_product_metrics_by_camera(
-        yaxis, camera, begin_date=start_date, end_date=end_date)
+        xaxis, camera, begin_date=start_date, end_date=end_date)
 
     df_y = pd.DataFrame(list(outputs_y))
     df_x = pd.DataFrame(list(outputs_x))
@@ -41,22 +40,18 @@ try:
     plot = hv.Curve([])
     df_x[yaxis] = df_y['value'].apply(lambda x: x[0])
     df_x[xaxis] = df_x['value'].apply(lambda x: x[0])
-    tooltips = [
-        ('Exposure', '@exposure_id'),
-        ('camera', '@camera'),
-        ('Date', '@datef'),
-        (yaxis, '@{}'.format(yaxis)),
-        (xaxis, '@{}'.format(xaxis)),
-    ]
-    hover = HoverTool(tooltips=tooltips)
     plot = hv.Points(df_x, [xaxis, yaxis], ['exposure_id', 'camera',
-                            'datef', 'dateobs']).opts(tools=[hover], size=3)
-    if DATASHADE == 'true':
-        plot = datashade(plot)
+                            'datef', 'dateobs'])
+    # if DATASHADE == 'true':
+    #     plot = datashade(plot)
     layout = plot.redim.label(x=xaxis, y=yaxis).opts(
-        sizing_mode='scale_width', height=100, padding=0.1, fontsize='1.2vw', toolbar='above', active_tools=["box_zoom"], title='Camera: {}'.format(camera))
+        sizing_mode='scale_width', height=150, padding=0.1, fontsize='1.2vw', toolbar='above', active_tools=["box_zoom"], title='Camera: {}'.format(camera))
     doc = renderer.server_doc(layout)
     doc.title = 'Time Series'
 except Exception as e:
-    print(e)
-    sys.exit()
+    renderer = hv.renderer('bokeh')
+    print('error', e)
+    doc = renderer.server_doc(hv.Div("""
+        <p style="font-size: 2.2vw"> Couldn't Load Regression </p>
+    """))
+    doc.title = 'Regression Error'
