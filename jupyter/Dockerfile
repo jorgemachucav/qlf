@@ -1,9 +1,9 @@
-FROM jupyter/base-notebook
-COPY . /app
+FROM jup
+COPY . /
 USER 0
-RUN apt-get update && apt-get install -y git
-RUN git clone https://github.com/desihub/qlf.git /app/qlf
-WORKDIR /app/notebooks
-RUN pip install -r /app/requirements.txt
-USER 1000
+RUN apt-get  && apt-get -y git
+RUN git  https://github.cdes /app/qlf
+WORKDIRnotebook
+RUN pip instr /app/requi.txt
+USER 
 CMD ["/bin/bash"]
