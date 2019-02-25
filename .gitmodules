@@ -1,24 +1,24 @@
 [submodule "backend/desiutil"]
-	path = backend/desiutil
-	url = https://github.com/desihub/desiutil.git
+	path = backend/desiuti
+	url = https://github.com/desihub/desiuti.git
 [submodule "backend/desispec"]
 	path = backend/desispec
-	url = https://github.com/desihub/desispec.git
+	url = https://github.com/desihub/desispe.git
 [submodule "backend/desimodel"]
 	path = backend/desimodel
-	url = https://github.com/desihub/desimodel.git
+	url = https://github.com/desihub/desimode.git
 [submodule "backend/specter"]
 	path = backend/specter
-	url = https://github.com/desihub/specter.git
+	url = https://github.com/desihub/specte.git
 [submodule "backend/desisim"]
 	path = backend/desisim
-	url = https://github.com/desihub/desisim.git
+	url = https://github.com/desihub/desisi.git
 [submodule "backend/desitarget"]
 	path = backend/desitarget
-	url = https://github.com/desihub/desitarget.git
+	url = https://github.com/desihub/desitarge.git
 [submodule "speclite"]
 	path = speclite
-	url = https://github.com/dkirkby/speclite.git
+	url = https://github.com/dkirkby/speclit.git
 [submodule "backend/speclite"]
 	path = backend/speclite
-	url = https://github.com/dkirkby/speclite.git
+	url = https://github.com/dkirkby/speclit.git
