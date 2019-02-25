@@ -10,26 +10,26 @@ services:
   redis:
     image: redis
   app:
-    build: ./backend
+    build: ./backen
     env_file:
       - ./backend/global-env
     volumes:
       - ./backend/:/app
     working_dir: /app/
-    command: ./run.sh
+    command: ./runsh
     depends_on:
       - redis
       - db
   nginx:
     build: ./frontend
     ports:
-      - 80:8080
+      - 80
     cap_drop:
       - ALL
     depends_on:
       - app
 #  jupyter:
-#    build: ./jupyter
-#    command: /app/run.sh
+#    build: ./jupyte
+#    command: /app/runsh
 #    ports:
-#      - 8080:8888
+#      - 808
