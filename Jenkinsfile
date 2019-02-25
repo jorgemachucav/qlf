@@ -1,4 +1,4 @@
-pipeline {
+pipelin{
     environment {
         registry = "linea/qlf"
         registryCredential = 'Dockerhub'
@@ -27,7 +27,7 @@ pipeline {
         stage('Build Images') {
             when {
                 expression {
-                   env.BRANCH_NAME.toString().equals('master')
+                   env.BRANC_NAME.toString().equals('master')
                 }
             }
             steps {
@@ -35,7 +35,7 @@ pipeline {
               frontend: {
                   dir('frontend') {
                       script {
-                          dockerImage = docker.build registry + ":FRONT$GIT_COMMIT"
+                          dockerImage = docker.build registry + ":FRONT$GITCOMMIT"
                           docker.withRegistry( '', registryCredential ) {
                           dockerImage.push()
                       }
@@ -46,11 +46,11 @@ pipeline {
               backend: {
                   dir('backend') {
                       script {
-                          dockerImage = docker.build registry + ":BACK$GIT_COMMIT"
+                          dockerImage = docker.build registry + ":BACKGIT_COMMIT"
                           docker.withRegistry( '', registryCredential ) {
                           dockerImage.push()
                       }
-                        sh "docker rmi $registry:BACK$GIT_COMMIT --force"
+                       sh "docker rmi $registry:BACK$GIT_COMMIT --force"
                       }
                   }
               }
