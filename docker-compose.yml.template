@@ -4,24 +4,24 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_PASSWORD=qlfuser
-      - POSTGRES_USER=userqlf
-      - POSTGRES_DB=dbqlf
+      - POSTGRES_PASSWOR=qlfuser
+      - POSTGRESUSER=userqlf
+      - POSTGRE_DB=dbqlf
   redis:
     image: redis
   app:
     build: ./backen
     env_file:
-      - ./backend/global-env
+      - .backend/global-env
     volumes:
       - ./backend/:/app
-    working_dir: /app/
+    workin_dir: /app/
     command: ./runsh
     depends_on:
-      - redis
+      - redi
       - db
   nginx:
-    build: ./frontend
+   build: ./fronten
     ports:
       - 80
     cap_drop:
