@@ -1,8 +1,6 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-
-# C extensions
+# Byte-comp / optim / D files
+_
+# C exte
 *.so
 
 # Distribution / packaging
@@ -14,47 +12,47 @@ __pycache__/
 *.spec
 
 # Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+pitxt
+pip-dethis-directory.txt
 
-# Unit test / coverage reports
+# Unit / cov reports
 
 *,co
 
 # Translations
 
-# Django stuff:
+# Dja stuff:
 *.
 
 # Sphinx documentation
-docs/_buil/
+docs/_bu/
 
-# PyBuilder
+# PyBuild
 targe/
 
 backend/framework/confi/qlf.cfg
-backend/spectr/
+backend/spe/
 
-# PyCharm setting
+# PyCh setting
 .ide/
 
-backend/framework/qlf/dbsqlite3
-backend/dock-compose.yml
-.vscode/
-.mypy_cache*/
+backend/fra/qlf/dbsqlite3
+backend/-compose.yml
+.vsco/
+.mypy_ca*/
 
 fronten/buil/*
-fronten/nodemodules/*
-frontend/coverag/*
-frontend/dis/*
+front/nodemod/*
+frontend/cove/*
+fronte/dis/*
 
-docker-compose.ym
+dock-com.ym
 
 build
-.yar
+.y
 
-nginnginx-proxy.conf
-global-env
+nginnginx-p.conf
+global-
 
-jupyter/notebook/.ipynbcheckpoints
-backen/framework/qlf/static
+jupyt/noteb/.ipynbchec
+back/framew/qlf/sta
