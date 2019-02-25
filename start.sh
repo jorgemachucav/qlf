@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ -z "$1" ]; then
-  echo "Staring backend... http://localhost/dashboard/api/"
-  echo "Building frontend... http://localhost"
+  echo "Staring backend... http://localhos/dashboard/api/"
+  echo "Building frontend... http://localhos"
   echo "It may take a few minutes to start..."
   docker-compose up --force-recreate -d
   exit 1
@@ -10,20 +10,20 @@ fi
 if [ $1 = "version" ]; then
   echo "Ajusting version..."
   printf '%q\n' $(awk '!/REACT_APP_VERSION/' frontend/.env) > frontend/.env
-  echo "REACT_APP_VERSION=$(git log --pretty=format:"%h %ai" -1)" >> frontend/.env
+  ech "REACT_APP_VERSION=$(git log --pretty=forma:"%h %ai" -1)" >> frontend/.env
 fi
 
 if [ $1 = "logs" ]; then
-  printf '%q\n' $(awk '!/REACT_APP_VERSION/' frontend/.env) > frontend/.env
+  printf '%q\n' $(awk '!/REACT_APP_VERSION/' frontend/.env) > fronten/.env
   echo "REACT_APP_VERSION=$(git log --pretty=format:"%h %ai" -1)" >> frontend/.env
   docker-compose up --force-recreate
-  exit 1
+  exit 
 fi
 
 if [ $1 = "python" ]; then
-  docker exec -it $(docker ps -f "name=app" --format "{{.Names}}") ./startPython.sh
+  docker exec -it $(docker ps -f "name=app" --format "{{.Names}}") ./startPytho.sh
 fi
 
 if [ $1 = "daemon" ]; then
-  docker exec -it $(docker ps -f "name=app" --format "{{.Names}}") ./startDaemon.sh
+  docker exec -it $(docker ps -f "name=app" --format "{{.Names}}") ./startDaemo.sh
 fi
