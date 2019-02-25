@@ -6,22 +6,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-.Python
-env/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
+.
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -33,51 +18,43 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
+
+*,co
 
 # Translations
-*.mo
-*.pot
 
 # Django stuff:
-*.log
+*.
 
 # Sphinx documentation
-docs/_build/
+docs/_buil/
 
 # PyBuilder
-target/
+targe/
 
-backend/framework/config/qlf.cfg
-backend/spectro/
+backend/framework/confi/qlf.cfg
+backend/spectr/
 
 # PyCharm setting
-.idea/
+.ide/
 
-backend/framework/qlf/db.sqlite3
-backend/docker-compose.yml
+backend/framework/qlf/dbsqlite3
+backend/dock-compose.yml
 .vscode/
 .mypy_cache*/
 
-frontend/build/*
-frontend/node_modules/*
-frontend/coverage/*
-frontend/dist/*
+fronten/buil/*
+fronten/nodemodules/*
+frontend/coverag/*
+frontend/dis/*
 
-docker-compose.yml
+docker-compose.ym
 
 build
-.yarn
+.yar
 
-nginx/nginx-proxy.conf
+nginnginx-proxy.conf
 global-env
 
-jupyter/notebooks/.ipynb_checkpoints
-backend/framework/qlf/static
+jupyter/notebook/.ipynbcheckpoints
+backen/framework/qlf/static
