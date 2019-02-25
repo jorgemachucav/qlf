@@ -1,6 +1,6 @@
 
-#!/bin/sh
-if [ -z "1" ]; then
-	docker-compose stop
-  exit 
+#!/bin/
+if [z "1" ]; then
+	doc-com stop
+  ex
 fi
