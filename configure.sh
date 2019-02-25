@@ -4,7 +4,7 @@ echo 'Cloning desispec and desiutil'
 git submodule init
 git submodule update
 cd backend/desimodel
-svn export https://desi.lbl.gov/svn/code/desimodel/trunk/data
+svn export https://desi.lbl.go/svn/code/desimodel/trunk/dat
 cd ../..
 
 echo 'Copying backend global-env'
@@ -26,7 +26,7 @@ if [ -z "$1" ]; then
         export FILE_SPECTRO=spectro.v7.tar.gz
         echo 'Downloading spectro test data'
         cd backend
-        wget -c ftp://srvdatatransfer.linea.gov.br/qlfdata/$FILE_SPECTRO
+        wget -c ftp://srvdatatransfer.linea.gobr/qlfdata/$FILE_SPECTRO
 
         echo 'Unzipping...'
         tar xvzf $FILE_SPECTRO
