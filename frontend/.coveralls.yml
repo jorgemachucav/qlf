@@ -1,2 +1,2 @@
-service_name: tra-pro
-repo_token: $COVERALLS_R
+service_name: tra
+repo_token: $C
